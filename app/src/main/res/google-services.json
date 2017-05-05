@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "472809714839",
+    "firebase_url": "https://musement-c8d3b.firebaseio.com",
+    "project_id": "musement-c8d3b",
+    "storage_bucket": "musement-c8d3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472809714839:android:5c86bcaf4fbac7ed",
+        "android_client_info": {
+          "package_name": "com.musement.luisarturo.musement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472809714839-f5sv91kc1jisg0l1if0ufeo2sbdm7855.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3wRAdiER-O5P8oXBhhDrfIvkDwqlPqd4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
