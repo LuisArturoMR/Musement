@@ -91,7 +91,7 @@ public class CrearMomento extends AppCompatActivity implements View.OnClickListe
         moment.setTime(time);
 
         ref.child("Moments").child(uid).setValue(moment);
-        //ref.child("Moments").child(uid).child("titulo").setValue(moment);
+        //ref.child("Moments").child(uid).child("usuarios").setValue(moment);
         Toast.makeText(this, "Updating data...",Toast.LENGTH_LONG).show();
 
 

@@ -29,7 +29,7 @@ public class Fragment_Team extends android.app.Fragment implements  View.OnClick
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         button = (Button) view.findViewById(R.id.buttonLista);
-        button.setOnClickListener(this);
+        //button.setOnClickListener(this);
 
         return view;
     }

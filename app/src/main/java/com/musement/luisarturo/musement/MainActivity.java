@@ -104,17 +104,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             transaction.replace(R.id.container, fragmentDash, "fragmentAdd").setTransition(android.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             transaction.commit();
 
-        } else if(item.getItemId() == R.id.menu_team) {
-
-            Fragment_Team fragment_team = new Fragment_Team();
-            //fragmentAdd.setArguments(b);
-
-            FragmentManager manager = getFragmentManager();
-            android.app.FragmentTransaction transaction = manager.beginTransaction();
-
-            transaction.replace(R.id.container, fragment_team, "fragmentAdd")
-                    .setTransition(android.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            transaction.commit();
         }
 
 
