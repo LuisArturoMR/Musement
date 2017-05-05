@@ -6,4 +6,5 @@ package com.musement.luisarturo.musement;
 
 public class Config {
     public static final String FIREBASE_URL = "https://musement-c8d3b.firebaseio.com/";
+    public static final String FIREBASE_URL_TEAMS = "https://musement-c8d3b.firebaseio.com/Teams/";
 }
