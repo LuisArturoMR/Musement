@@ -1,10 +1,18 @@
 package com.musement.luisarturo.musement;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +24,13 @@ public class JSONAdapter extends BaseAdapter {
 
     JSONArray jarray;
     Activity activity;
+
+    DatabaseReference mDatabase;
+    private DatabaseReference mPostReference;
+
+    private static final String TAG = "JSONADAPTER";
+
+    private TextView id;
 
     public JSONAdapter(JSONArray jarray, Activity activity){
         this.jarray = jarray;
@@ -57,6 +72,7 @@ public class JSONAdapter extends BaseAdapter {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
         return view;
     }
