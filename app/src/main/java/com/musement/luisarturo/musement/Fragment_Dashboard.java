@@ -3,15 +3,27 @@ package com.musement.luisarturo.musement;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.firebase.client.*;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +34,7 @@ import java.util.List;
 /**
  * Fragment class for each nav menu item
  */
-public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequestCallback, AdapterView.OnItemClickListener{
+public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequestCallback, AdapterView.OnItemClickListener, View.OnClickListener{
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -34,6 +46,10 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
     ListView lv;
     JSONArray array;
 
+    TextView email;
+    Button logout;
+    Firebase ref;
+
     private static final String ARG_TEXT = "arg_text";
     private static final String ARG_COLOR = "arg_color";
 
@@ -41,6 +57,9 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
     private int mColor;
 
     private OnFragmentInteractionListener mListener;
+
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
 
     public Fragment_Dashboard(){
         //empty constructor
@@ -57,10 +76,14 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         if(getArguments() != null){
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        Firebase.setAndroidContext(this.getActivity());
+        ref = new Firebase(Config.FIREBASE_URL);
     }
 
     @Override
@@ -70,6 +93,17 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
 
         r = new JSONRequest(this);
         r.execute("https://jsonplaceholder.typicode.com/posts");
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        String tmp = firebaseAuth.getCurrentUser().getEmail();
+
+        email = (TextView) view.findViewById(R.id.userEmaill);
+        email.setText(tmp);
+
+        logout = (Button) view.findViewById(R.id.logout);
+        logout.setOnClickListener(this);
+
+
 
         return view;
     }
@@ -96,7 +130,7 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
             String title = array.getJSONObject(i).getString("title");
             String body = array.getJSONObject(i).getString("body");
 
-            
+
 
             mListener.changeFragment(title, body);
         } catch (JSONException e) {
@@ -113,12 +147,26 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
+        Firebase.setAndroidContext(this.getActivity());
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == logout){
+            signOut();
+        }
+    }
+
+    private void signOut() {
+        firebaseAuth.signOut();
+        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 
     public interface OnFragmentInteractionListener {

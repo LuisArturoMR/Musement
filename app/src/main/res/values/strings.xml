@@ -73,5 +73,6 @@
     <string name="descripcion">descripcion</string>
     <string name="nombre">nombre</string>
     <string name="tiempo">tiempo</string>
+    <string name="logout">logout</string>
 
 </resources>

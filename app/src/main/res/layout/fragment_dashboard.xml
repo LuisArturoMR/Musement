@@ -5,9 +5,38 @@
     android:layout_height="match_parent"
     tools:context="com.musement.luisarturo.musement.Fragment_Dashboard">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="130dp"
+            android:id="@+id/userEmaill"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:id="@+id/logout"
+            android:text="@string/logout"/>
+
+    </LinearLayout>
+
+
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/layout1"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:id="@+id/listview"
         android:layout_gravity="center" />
 

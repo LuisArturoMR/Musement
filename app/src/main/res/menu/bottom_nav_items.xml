@@ -10,8 +10,4 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/menu_dashboard" />
 
-    <item
-        android:id="@+id/menu_team"
-        android:icon="@drawable/ic_menu_black_24dp"
-        android:title="@string/menu_team" />
 </menu>
