@@ -89,7 +89,7 @@ public class Sign extends AppCompatActivity {
                                     Toast.makeText(Sign.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(Sign.this, MainActivity.class));
+                                    startActivity(new Intent(Sign.this, Team.class));
                                     finish();
                                 }
                             }
