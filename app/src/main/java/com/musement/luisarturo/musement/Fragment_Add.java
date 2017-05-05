@@ -63,13 +63,13 @@ public class Fragment_Add extends android.app.Fragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if(v == btnCrear){
-            //Intent intent = new Intent(getActivity(), CrearMomento.class);
-            //startActivity(intent);
+            Intent intent = new Intent(getActivity(), CrearMomento.class);
+            startActivity(intent);
         }
 
         if(v == btnBorrar){
-            //Intent intent = new Intent(getActivity(), BorrarMomento.class);
-            //startActivity(intent);
+            Intent intent = new Intent(getActivity(), BorrarMomento.class);
+            startActivity(intent);
         }
     }
 

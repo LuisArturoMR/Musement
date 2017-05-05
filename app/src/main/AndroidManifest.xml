@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".BorrarMomento" />
+        <activity android:name=".CrearMomento" />
 
     </application>
 

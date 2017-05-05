@@ -67,5 +67,11 @@
     <string name="menu_team">Team</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="crear_momento">Crear Momento</string>
+    <string name="descripcion">descripcion</string>
+    <string name="nombre">nombre</string>
+    <string name="tiempo">tiempo</string>
 
 </resources>

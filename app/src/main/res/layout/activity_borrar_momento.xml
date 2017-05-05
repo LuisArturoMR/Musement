@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.scastro81.teamstec.Main.subFragmentAdd.BorrarMomento">
+
+
+    <TextView
+        android:text="Borrar Momento"
+        android:textSize="28dp"
+        android:id="@+id/TextViewCrearMomento"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="escribe el nombre del momento que quieres borrar"
+        android:id="@+id/TextViewHint"
+        android:layout_below="@+id/TextViewCrearMomento"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:textSize="15dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="Nombre"
+        android:textSize="25dp"
+        android:id="@+id/textViewTitulo"
+        android:layout_below="@+id/TextViewHint"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/editTextTitulo"
+        android:layout_below="@+id/textViewTitulo"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="20dp"
+
+        android:gravity="left"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:text="Aceptar"
+        android:id="@+id/btnAceptar"
+        android:textSize="25dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_below="@+id/textViewTitulo"
+        android:layout_alignStart="@+id/textViewTitulo"
+        android:layout_marginTop="156dp" />
+
+    <Button
+        android:text="Cancelar"
+        android:id="@+id/btnCancelar"
+        android:textSize="25dp"
+        android:layout_marginLeft="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_alignBaseline="@+id/btnAceptar"
+        android:layout_alignBottom="@+id/btnAceptar"
+        android:layout_toEndOf="@+id/btnAceptar" />
+
+</RelativeLayout>
