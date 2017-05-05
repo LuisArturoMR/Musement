@@ -36,6 +36,14 @@ import java.util.List;
  */
 public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequestCallback, AdapterView.OnItemClickListener, View.OnClickListener{
 
+    Button btn1;
+    Button btn2;
+    Button btn3;
+    Button btn4;
+    Button btn5;
+    Button btn6;
+    Button btn7;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -92,16 +100,32 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         r = new JSONRequest(this);
-        r.execute("https://musement-c8d3b.firebaseio.com/moments");
+        r.execute("https://musement-c8d3b.firebaseio.com/moments/");
 
         firebaseAuth = FirebaseAuth.getInstance();
         String tmp = firebaseAuth.getCurrentUser().getEmail();
 
         email = (TextView) view.findViewById(R.id.userEmaill);
-        email.setText(tmp);
+        email.setText("Hola usuario : " + tmp);
 
         logout = (Button) view.findViewById(R.id.logout);
         logout.setOnClickListener(this);
+
+        btn1 = (Button) view.findViewById(R.id.lv1);
+        btn2 = (Button) view.findViewById(R.id.lv2);
+        btn3 = (Button) view.findViewById(R.id.lv3);
+        btn4 = (Button) view.findViewById(R.id.lv4);
+        btn5 = (Button) view.findViewById(R.id.lv5);
+        btn6 = (Button) view.findViewById(R.id.lv6);
+        btn7 = (Button) view.findViewById(R.id.lv7);
+
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
+        btn5.setOnClickListener(this);
+        btn6.setOnClickListener(this);
+        btn7.setOnClickListener(this);
 
         return view;
     }
@@ -158,6 +182,35 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
     public void onClick(View v) {
         if(v == logout){
             signOut();
+        }
+
+        if (v == btn1){
+            Intent intent = new Intent(getActivity(), momentTest.class);
+            startActivity(intent);
+        }
+        if (v == btn2){
+            Intent intent = new Intent(getActivity(), momentTest.class);
+            startActivity(intent);
+        }
+        if (v == btn3){
+            Intent intent = new Intent(getActivity(), momentTest.class);
+            startActivity(intent);
+        }
+        if (v == btn4){
+            Intent intent = new Intent(getActivity(), momentTest.class);
+            startActivity(intent);
+        }
+        if (v == btn5){
+            Intent intent = new Intent(getActivity(), momentTest.class);
+            startActivity(intent);
+        }
+        if (v == btn6){
+            Intent intent = new Intent(getActivity(), momentTest.class);
+            startActivity(intent);
+        }
+        if (v == btn7){
+            Intent intent = new Intent(getActivity(), momentTest.class);
+            startActivity(intent);
         }
     }
 

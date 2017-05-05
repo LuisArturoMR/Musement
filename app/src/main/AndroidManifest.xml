@@ -25,10 +25,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Team"></activity>
+        <activity android:name=".Team" />
         <activity android:name=".BorrarMomento" />
         <activity android:name=".CrearMomento" />
-
+        <activity android:name=".momentTest"></activity>
     </application>
 
 </manifest>
