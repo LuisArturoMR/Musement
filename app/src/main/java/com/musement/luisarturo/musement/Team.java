@@ -124,6 +124,7 @@ public class Team extends AppCompatActivity {
                      Toast.makeText(Team.this, "Added to your new Team ;)", Toast.LENGTH_SHORT).show();
                      updateUser(uid,userTeamId,key);
 
+
                  }
                  else{
                      Toast.makeText(Team.this, "Ups! Team doesn't exist", Toast.LENGTH_SHORT).show();
@@ -141,8 +142,10 @@ public class Team extends AppCompatActivity {
     private void updateUser(String user, int userTeamId, String key) {
         Firebase ref = new Firebase(Config.FIREBASE_URL);
 
+
         Toast.makeText(this, "Your team id is " + key, Toast.LENGTH_SHORT).show();
         // updating the user via child nodes
         ref.child("Teams").child(String.valueOf(key)).child("usuarios").setValue(user);
+        startActivity(new Intent(this, MainActivity.class));
     }
 }
