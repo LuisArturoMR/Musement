@@ -92,7 +92,7 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         r = new JSONRequest(this);
-        r.execute("https://jsonplaceholder.typicode.com/posts");
+        r.execute("https://musement-c8d3b.firebaseio.com/moments");
 
         firebaseAuth = FirebaseAuth.getInstance();
         String tmp = firebaseAuth.getCurrentUser().getEmail();
@@ -103,10 +103,10 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
         logout = (Button) view.findViewById(R.id.logout);
         logout.setOnClickListener(this);
 
-
-
         return view;
     }
+
+    //r.execute("https://jsonplaceholder.typicode.com/posts");
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -117,11 +117,11 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
 
     @Override
     public void done(JSONArray jsonArray) {
-        array = jsonArray;
-        JSONAdapter adpt = new JSONAdapter(jsonArray, this.getActivity());
-        lv = (ListView)getActivity().findViewById(R.id.listview);
-        lv.setAdapter(adpt);
-        lv.setOnItemClickListener(this);
+        System.out.println("json array: " + jsonArray);
+        //JSONAdapter adpt = new JSONAdapter(jsonArray, this.getActivity());
+        //lv = (ListView)getActivity().findViewById(R.id.listview);
+        //lv.setAdapter(adpt);
+        //lv.setOnItemClickListener(this);
     }
 
     @Override
@@ -129,9 +129,6 @@ public class Fragment_Dashboard extends Fragment implements JSONRequest.JSONRequ
         try {
             String title = array.getJSONObject(i).getString("title");
             String body = array.getJSONObject(i).getString("body");
-
-
-
             mListener.changeFragment(title, body);
         } catch (JSONException e) {
             e.printStackTrace();

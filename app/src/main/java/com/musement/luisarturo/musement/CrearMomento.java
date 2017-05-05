@@ -11,8 +11,14 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CrearMomento extends AppCompatActivity implements View.OnClickListener{
 
@@ -26,6 +32,8 @@ public class CrearMomento extends AppCompatActivity implements View.OnClickListe
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +61,8 @@ public class CrearMomento extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Hello "+firebaseAuth.getCurrentUser().getEmail(),Toast.LENGTH_LONG).show();
         }
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         Firebase.setAndroidContext(this);
     }
 
@@ -60,7 +70,8 @@ public class CrearMomento extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if (v == btnAceptar){
-            create();
+            //create();
+            submitPost();
             finish();
             startActivity(new Intent(this, MainActivity.class));
 
@@ -71,6 +82,43 @@ public class CrearMomento extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, MainActivity.class));
 
         }
+
+    }
+
+    private void submitPost(){
+        final String titulo = editTextTitulo.getText().toString();
+        final String desc = editTextDesc.getText().toString();
+
+        final String userId = firebaseAuth.getCurrentUser().getUid();
+        mDatabase.child("moments").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Moment moment = dataSnapshot.getValue(Moment.class);
+
+                writeNewPost(userId, titulo, desc);
+
+                finish();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void writeNewPost(String userId, String titulo, String desc){
+
+        String key = mDatabase.child("moment").push().getKey();
+        Moment moment = new Moment(userId, titulo, desc);
+        Map<String, Object> mapValues = moment.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/moments/" + key, mapValues);
+        childUpdates.put("/user-moments/" + userId + "/" + key, mapValues);
+
+        mDatabase.updateChildren(childUpdates);
 
     }
 
